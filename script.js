@@ -24,7 +24,7 @@ function calculo(){
 
         //Funcionários
         var funcionarioReduz = valorFuncionario - (valorFuncionario * 0.1);
-        var lucroFuncionario = valorFuncionario - funcionarioReduz + custoPreparacao;
+        var lucroFuncionario = valorFuncionario - funcionarioReduz - custoPreparacao;
 
         //Ciclos
         var cicloLucro = valorCiclo * 1.1; //Lucro padrão de aproximadamente 10%
