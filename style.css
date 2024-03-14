@@ -79,7 +79,7 @@ button {
 }
 
 .airplane1 {
-    width: 750px;
+    width: 40vw;
     background-color: #0c2c54;
     height: 375px;
     border-radius: 0 0 0 100%;
@@ -87,14 +87,14 @@ button {
 }
 
 .airplane2 {
-    width: 710px;
+    width: 39vw;
     background-color: white;
     position: absolute;
     right: 0;
 }
 
 .airplane_img {
-    width: 666px;
+    width: 38vw;
     background-color: white;
 }
 
