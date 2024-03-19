@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 15px;
+    font-size: 22px;
     background-color: #111;
     color: white
 }
@@ -75,7 +75,7 @@ button {
     border-radius: 4px;
     font-weight: bold;
     border: 2px white solid;
-    width: 150px;
+    width: 250px;
 }
 
 .airplane1 {
@@ -110,7 +110,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 90%;
+    width: 98%;
     height: auto;
     padding: 20px 50px 20px 50px;
     background-color: #153d5a;
@@ -123,7 +123,7 @@ button {
     font-weight: bold;
     text-decoration: underline;
     background-color: #153d5a;
-    font-size: 25px;
+    font-size: 33px;
     margin-bottom: 5px;
 }
 
@@ -173,11 +173,11 @@ button {
 }
 
 .status_despesaPadrao {
-    background-color: #f00;
+    background-color: rgb(255, 118, 118);
 }
 
 .status_despesaSensor {
-    background-color: rgb(255, 123, 0);
+    background-color: rgb(216, 163, 113);
 }
 
 .status_economia {
@@ -192,6 +192,7 @@ button {
     display: flex;
     background-color: #153d5a;
     margin-left: auto;
+    align-items: center;
 }
 
 .legenda {
@@ -202,12 +203,12 @@ button {
     display: flex;
     flex-direction: column;
     margin: 10px 0;
-    width: 600px;
+    width: 700px;
 }
 
 .legenda_titulo {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 26px;
     background-color: #0a2030;
     align-self: center;
     margin-bottom: 5px;
@@ -216,7 +217,8 @@ button {
 .legenda_lista li {
     background-color: #0a2030;
     display: flex;
-    padding: 3px
+    padding: 3px;
+    align-items: center;
 }
 
 .destaque {
@@ -225,12 +227,12 @@ button {
 }
 
 .dstq_despesaSensor {
-    color: rgb(255, 123, 0);
+    color: rgb(216, 163, 113);
     margin-left: 5px;
 }
 
 .dstq_despesaPadrao {
-    color: red;
+    color: rgb(255, 118, 118);
     margin-left: 5px;
 }
 
@@ -250,5 +252,5 @@ button {
 }
 
 .dstq_resumo {
-    font-size: 18px;
+    font-size: 25px;
 }

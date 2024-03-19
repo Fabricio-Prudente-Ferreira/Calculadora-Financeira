@@ -83,8 +83,8 @@ function calculo() {
 
         var topico2 = `<li>O gasto com funcionários, sem os sensores, é de <span class='destaque dstq_despesaPadrao'>${valorFuncionarioRS}</span>;${div_despesaPadrao}</li>
                     <li>O gasto com funcionários, com os sensores, será de <span class='destaque dstq_despesaSensor'>${funcionarioReduzRS} (Redução de 10%)</span>;${div_despesaSensor}</li>
-                    <li>Levando em consideração que 1 funcionário recebe, por ano, R$ 60.000,00, a companhia aérea possui, aproximadamente, ${qtdFuncionario} funcionários; ${div_outros}</li>
-                    <li>Custo padrão com a preparação de funcionários: R$ 2.500,00 por funcionário. Para preparar os ${qtdFuncionario} funcionários, haverá um custo de <span class='destaque dstq_despesaSensor'>${custoPreparacaoRS}</span>;${div_despesaSensor}</li>
+                    <li>Sabendo que 1 funcionário recebe, por ano, R$ 60.000,00, a companhia aérea possui, aproximadamente, ${qtdFuncionario} funcionários; ${div_outros}</li>
+                    <li>Custo para a preparação de 1 funcionário: R$ 2.500,00. Para preparar os ${qtdFuncionario} funcionários, serão necessários <span class='destaque dstq_despesaSensor'>${custoPreparacaoRS}</span>;${div_despesaSensor}</li>
                     <li><span class='destaque dstq_resumo'>Dessa forma, a empresa economizará<span class='destaque dstq_resumo dstq_economia'>${lucroFuncionarioRS}</span> com funcionários por ano.</span>${div_economia}</li>`
 
         var topico3 = `<li>Quantidade de ciclos executados pelas aeronaves anualmente: ${qtdCiclo} ciclos;${div_outros}</li>
