@@ -79,7 +79,7 @@ button {
 }
 
 .airplane1 {
-    width: 40vw;
+    width: 42vw;
     background-color: #0c2c54;
     height: 375px;
     border-radius: 0 0 0 100%;
@@ -87,14 +87,14 @@ button {
 }
 
 .airplane2 {
-    width: 39vw;
+    width: 41vw;
     background-color: white;
     position: absolute;
     right: 0;
 }
 
 .airplane_img {
-    width: 38vw;
+    width: 40vw;
     background-color: white;
 }
 
@@ -129,11 +129,10 @@ button {
 
 .topic_list li{
     background-color: #153d5a;
+    width: 100%;
     padding: 3px;
     display: flex;
-    list-style: circle;
     align-items: center;
-    justify-content: space-between;
 }
 
 .footer{
@@ -165,12 +164,12 @@ button {
     font-size: 10px;
 }
 
-.status_lucroPadrao {
+.status_rendimentoPadrao {
     background-color: yellow;
 }
 
-.status_lucroSensor {
-    background-color: #11ce00;
+.status_rendimentoSensor {
+    background-color: #00ffff;
 }
 
 .status_despesaPadrao {
@@ -178,7 +177,11 @@ button {
 }
 
 .status_despesaSensor {
-    background-color: rgb(190, 107, 68);
+    background-color: rgb(255, 123, 0);
+}
+
+.status_economia {
+    background-color: #11ce00;
 }
 
 .status_outros {
@@ -188,6 +191,7 @@ button {
 .topic_class {
     display: flex;
     background-color: #153d5a;
+    margin-left: auto;
 }
 
 .legenda {
@@ -198,7 +202,7 @@ button {
     display: flex;
     flex-direction: column;
     margin: 10px 0;
-    width: 400px;
+    width: 600px;
 }
 
 .legenda_titulo {
@@ -213,4 +217,38 @@ button {
     background-color: #0a2030;
     display: flex;
     padding: 3px
+}
+
+.destaque {
+    font-weight: bold;
+    background-color: #153d5a;
+}
+
+.dstq_despesaSensor {
+    color: rgb(255, 123, 0);
+    margin-left: 5px;
+}
+
+.dstq_despesaPadrao {
+    color: red;
+    margin-left: 5px;
+}
+
+.dstq_rendimentoPadrao {
+    color: yellow;
+    margin-left: 5px;
+}
+
+.dstq_rendimentoSensor {
+    color: #00ffff;
+    margin-left: 5px;
+}
+
+.dstq_economia {
+    color: #11ce00;
+    margin-left: 5px;
+}
+
+.dstq_resumo {
+    font-size: 18px;
 }
