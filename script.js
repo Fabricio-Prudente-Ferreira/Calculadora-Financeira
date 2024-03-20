@@ -1,4 +1,6 @@
 function calculo() {
+
+    
     //Variáveis para os Inputs
     var valorManutencao = Number(input_manutencao.value) * 1_000_000;
     var valorFuncionario = Number(input_funcionario.value) * 1_000_000;
@@ -7,9 +9,8 @@ function calculo() {
     var qtdMotor = Number(input_qtdMotor.value);
 
     //Variáveis default
-    var custoInstall = 15000 * qtdMotor; // R$ 15.000,00 para cada sensor
+    var custoInstall = 7500 * qtdMotor; // R$ 7.500,00 para cada sensor (Valor estimado)
     var qtdFuncionario = parseInt(valorFuncionario / 60000); //Cada funcionário recebe R$ 60.000,00 ao ano
-    var custoPreparacao = 2500 * qtdFuncionario; // R$ 2.500,00 por funcionário
 
     //Validação
     if (valorManutencao <= 0 || valorFuncionario <= 0 || qtdCiclo <= 0 || valorCiclo <= 0 || qtdMotor <= 0) {
@@ -24,22 +25,22 @@ function calculo() {
 
         //Funcionários
         var funcionarioReduz = valorFuncionario - (valorFuncionario * 0.1); //Redução de 10%
-        var lucroFuncionario = valorFuncionario - funcionarioReduz - custoPreparacao; //Valor que representa o tanto que economizará com funcionários anualmente
+        var lucroFuncionario = valorFuncionario - funcionarioReduz; //Valor que representa o tanto que economizará com funcionários anualmente
 
         //Ciclos
-        var cicloLucro = valorCiclo * 1.1; //Aumento de 10%
+        var cicloLucro = valorCiclo * 0.9;
         var valorPorCiclo = valorCiclo / qtdCiclo; //Lucro gerado a cada ciclo do avião a jato (sem o sensor)
         var novoValorPorCiclo = cicloLucro / qtdCiclo; //Lucro gerado a cada ciclo do avião a jato (com o sensor)
         var lucroCicloPorAno = novoValorPorCiclo * qtdCiclo; //Lucro gerado por ano (com o sensor)
 
         //Custos Gerais
-        var custoTotalAntes = valorManutencao + valorFuncionario; //Custos sem os sensores
-        var custoTotalDepois = manutencaoReduz + funcionarioReduz + custoPreparacao + custoInstall; //Gastos com a implementação dos sensores
+        var custoTotalAntes = valorCiclo - (valorManutencao + valorFuncionario); //Custos sem os sensores
+        var custoTotalDepois = lucroCicloPorAno - (manutencaoReduz + funcionarioReduz + custoInstall); //Gastos com a implementação dos sensores
         var lucro = custoTotalAntes - custoTotalDepois; //Comparação entre os valores sem e com os sensores
         var porcentagemLucro = (100 * lucro / custoTotalAntes).toFixed(2); //Porcentagem do lucro
 
-
-
+        var novoValorPorCicloAumento = valorCiclo * 1.1 / qtdCiclo;
+        var lucroCicloPorAnoAumento = novoValorPorCicloAumento * qtdCiclo; 
 
         /* ======================== CONVERTER OS VALORES PARA A FORMATAÇÃO DO REAL ======================== */
 
@@ -49,12 +50,11 @@ function calculo() {
         var lucroManutencaoRS = lucroManutencao.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
         var valorFuncionarioRS = valorFuncionario.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
         var funcionarioReduzRS = funcionarioReduz.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
-        var custoPreparacaoRS = custoPreparacao.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
         var lucroFuncionarioRS = lucroFuncionario.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
         var valorCicloRS = valorCiclo.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
         var valorPorCicloRS = valorPorCiclo.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
-        var novoValorPorCicloRS = novoValorPorCiclo.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
-        var lucroCicloPorAnoRS = lucroCicloPorAno.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
+        var novoValorPorCicloAumentoRS = novoValorPorCicloAumento.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
+        var lucroCicloPorAnoAumentoRS = lucroCicloPorAnoAumento.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
         var custoTotalAntesRS = custoTotalAntes.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
         var custoTotalDepoisRS = custoTotalDepois.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
         var lucroRS = lucro.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
@@ -76,7 +76,7 @@ function calculo() {
 
         /* ======================== MENSAGENS DE CADA TÓPICO DO RESULTADO ======================== */
 
-        var topico1 = `<li>Custo padrão para a instalação de um sensor: R$ 15.000,00. Para a instalação de ${qtdMotor} sensores, haverá um custo de <span class='destaque dstq_despesaSensor'>${custoInstallRS}</span>;${div_despesaSensor}</li>
+        var topico1 = `<li>Custo estimado para a instalação de um sensor: R$ 7.500,00. Para a instalação de ${qtdMotor} sensores, haverá um custo de <span class='destaque dstq_despesaSensor'>${custoInstallRS}</span>;${div_despesaSensor}</li>
                     <li>O gasto com manutenção dos motores, sem a aplicação dos sensores, é de <span class='destaque dstq_despesaPadrao'>${valorManutencaoRS}</span>;${div_despesaPadrao}</li>
                     <li>O gasto com manutenção dos motores, com a aplicação dos sensores, é de <span class='destaque dstq_despesaSensor'>${manutencaoReduzRS} (Redução de 22%)</span>;${div_despesaSensor}</li>
                     <li><span class='destaque dstq_resumo'>Dessa forma, a empresa economizará<span class='destaque dstq_resumo dstq_economia'>${lucroManutencaoRS}</span> em manutenções por ano.</span>${div_economia}</li>`;
@@ -84,14 +84,13 @@ function calculo() {
         var topico2 = `<li>O gasto com funcionários, sem os sensores, é de <span class='destaque dstq_despesaPadrao'>${valorFuncionarioRS}</span>;${div_despesaPadrao}</li>
                     <li>O gasto com funcionários, com os sensores, será de <span class='destaque dstq_despesaSensor'>${funcionarioReduzRS} (Redução de 10%)</span>;${div_despesaSensor}</li>
                     <li>Sabendo que 1 funcionário recebe, por ano, R$ 60.000,00, a companhia aérea possui, aproximadamente, ${qtdFuncionario} funcionários; ${div_outros}</li>
-                    <li>Custo para a preparação de 1 funcionário: R$ 2.500,00. Para preparar os ${qtdFuncionario} funcionários, serão necessários <span class='destaque dstq_despesaSensor'>${custoPreparacaoRS}</span>;${div_despesaSensor}</li>
                     <li><span class='destaque dstq_resumo'>Dessa forma, a empresa economizará<span class='destaque dstq_resumo dstq_economia'>${lucroFuncionarioRS}</span> com funcionários por ano.</span>${div_economia}</li>`
 
         var topico3 = `<li>Quantidade de ciclos executados pelas aeronaves anualmente: ${qtdCiclo} ciclos;${div_outros}</li>
                     <li>O valor gerado a cada ciclo da aeronave, sem a aplicação dos sensores, é de <span class='destaque dstq_rendimentoPadrao'>${valorPorCicloRS}</span>;${div_rendimentoPadrao}</li>
-                    <li>O valor gerado a cada ciclo da aeronave, com a aplicação dos sensores, será de <span class='destaque dstq_rendimentoSensor'>${novoValorPorCicloRS} (Aumento de 10%)</span>;${div_rendimentoSensor}</li>
+                    <li>O valor gerado a cada ciclo da aeronave, com a aplicação dos sensores, será de <span class='destaque dstq_rendimentoSensor'>${novoValorPorCicloAumentoRS} (Ganho de 10%)</span>;${div_rendimentoSensor}</li>
                     <li>O valor gerado anualmente pelos ciclos das aeronaves, sem a aplicação dos sensores, é de <span class='destaque dstq_rendimentoPadrao'>${valorCicloRS}</span>;${div_rendimentoPadrao}</li>
-                    <li>O valor gerado anualmente pelos ciclos das aeronaves, com a aplicação dos sensores, será de <span class='destaque dstq_rendimentoSensor'>${lucroCicloPorAnoRS} (Aumento de 10%)</span>.${div_rendimentoSensor}</li>`;
+                    <li>O valor gerado anualmente pelos ciclos das aeronaves, com a aplicação dos sensores, será de <span class='destaque dstq_rendimentoSensor'>${lucroCicloPorAnoAumentoRS} (Ganho de 10%)</span>.${div_rendimentoSensor}</li>`;
 
         var topico4 = `<li>Os gastos gerais que a empresa aérea possui, sem a aplicação dos sensores, é de <span class='destaque dstq_despesaPadrao'>${custoTotalAntesRS}</span>;${div_despesaPadrao}</li>
                     <li>Os gastos gerais que a empresa aérea possuirá, com a aplicação dos sensores, será de <span class='destaque dstq_despesaSensor'>${custoTotalDepoisRS}</span>.${div_despesaSensor}</li>`;
